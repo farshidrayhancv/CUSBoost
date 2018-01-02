@@ -5,4 +5,8 @@ Class imbalance classification is a challenging research problem in data mining 
 
 This is the official python implementation of this paper. Please cite us if you use this code.
 
-The code is structured in a similar pattern of Sci-Kit learn. Use fit() to train and predict() to get predictions. predict_proba() and predict_proba_samme() can be used to get probabilites  
+The code is structured in a similar pattern of Sci-Kit learn. 
+
+## Use fit() to train 
+## predict() to get predictions. 
+## predict_proba() and predict_proba_samme() can be used to get probabilites  
