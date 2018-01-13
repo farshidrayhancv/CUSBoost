@@ -7,6 +7,10 @@ This is the official python implementation of this paper. Please cite us if you 
 
 The code is structured in a similar pattern of Sci-Kit learn. 
 
-## Use fit() to train 
-## predict() to get predictions. 
-## predict_proba() and predict_proba_samme() can be used to get probabilites  
+### for the RUSboost code 
+Use fit() to train 
+predict() to get predictions. 
+predict_proba() and predict_proba_samme() can be used to get probabilites  
+
+### For the CUSBoost code, 
+run it as it is. A sample dataset is also provided  
