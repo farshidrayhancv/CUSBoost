@@ -14,8 +14,8 @@ from sklearn.metrics import roc_auc_score, average_precision_score
 
 from sklearn.model_selection import StratifiedKFold
 
-
-dataset = 'csv dataset path here' 
+# datasets = ['gpcr_dataset_1282.txt' ]
+dataset = 'pima.txt'
 
 print("dataset : ", dataset)
 df = pd.read_csv(dataset, header=None)
@@ -37,7 +37,7 @@ mean_fpr = np.linspace(0, 1, 100)
 number_of_clusters = 23
 percentage_to_choose_from_each_cluster = 0.5
 
-for depth in range(2, 20, 5):
+for depth in range(2, 20, 10):
     for estimators in range(20, 50, 10):
 
         current_param_auc = []
@@ -118,11 +118,14 @@ for depth in range(2, 20, 5):
             best_fpr = mean_fpr
 
             best_precision, best_recall, _ = precision_recall_curve(y_test, predictions[:, 1])
+            best_fpr, best_tpr, thresholds = roc_curve(y_test, predictions[:, 1])
 
 print('ploting', dataset)
 #    plt.clf()
-plt.plot(best_recall, best_precision, lw=2, color='red',
-         label='Precision-Recall Clustered sampling')
+plt.plot(best_recall, best_precision, lw=2, color='Blue',
+         label='Precision-Recall Curve')
+plt.plot(best_fpr, best_tpr, lw=2, color='red',
+         label='ROC curve')
 
 plt.xlabel('Recall')
 plt.ylabel('Precision')
