@@ -12,5 +12,5 @@ Use fit() to train
 predict() to get predictions. 
 predict_proba() and predict_proba_samme() can be used to get probabilites  
 
-### For the CUSBoost code, 
+### For the LIUBoost code, 
 run it as it is. A sample dataset is also provided  
