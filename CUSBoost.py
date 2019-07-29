@@ -11,6 +11,7 @@ from imblearn.over_sampling import RandomOverSampler
 from imblearn.under_sampling import AllKNN
 from imblearn.under_sampling import ClusterCentroids
 from imblearn.under_sampling import EditedNearestNeighbours
+from cus_sampling import cus_sampler
 from sklearn.cluster import KMeans
 from sklearn.ensemble.weight_boosting import _samme_proba
 from sklearn.tree import DecisionTreeClassifier
@@ -18,7 +19,7 @@ from imblearn.under_sampling import RandomUnderSampler
 from imblearn.over_sampling import SMOTE
 
 
-class RusBoost:
+class CUSBoostClassifier:
     def __init__(self, n_estimators, depth):
         self.M = n_estimators
         self.depth = depth
@@ -38,8 +39,12 @@ class RusBoost:
         for m in range(self.M):
             tree = DecisionTreeClassifier(max_depth=self.depth, splitter='best')
 
-            X_undersampled, y_undersampled, chosen_indices = self.undersampler.fit_sample(X, Y)
-            tree.fit(X_undersampled, y_undersampled, sample_weight=W[chosen_indices])
+
+            X_undersampled, y_undersampled, chosen_indices = cus_sampler(X,Y)
+
+
+            tree.fit(X_undersampled, y_undersampled,
+                     sample_weight=W[chosen_indices])
 
             P = tree.predict(X)
 
